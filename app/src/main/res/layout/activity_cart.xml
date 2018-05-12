@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/viewBg"
+    android:textColor="@android:color/white"
+    tools:context="com.example.kevpreneur.smartshopper.Cart"
+    android:layout_gravity="bottom">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <ListView
+            android:id="@+id/items_List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@color/viewBg"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"></ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_marginTop="460dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_scan"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/lbl_value"
+            android:fontFamily="sans-serif-medium"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Scanner"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_checkout"
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="sans-serif-medium"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Checkout"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>

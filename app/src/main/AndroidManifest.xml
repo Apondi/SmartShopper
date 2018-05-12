@@ -25,19 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.kevpreneur.smartshopper.ScanActivity"
+        <activity
+            android:name=".ScanActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
-            tools:replace="screenOrientation"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-        <activity android:name=".CaptureActivityPortrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:replace="screenOrientation"></activity>
+        <activity
+            android:name=".CaptureActivityPortrait"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Cart"></activity>
     </application>
 
 </manifest>

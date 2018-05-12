@@ -25,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ScanActivity.class));
             }
         });
+
+        findViewById(R.id.view_cart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Cart.class));
+            }
+        });
     }
 }
