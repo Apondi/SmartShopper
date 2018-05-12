@@ -1,6 +1,7 @@
 package com.example.kevpreneur.smartshopper;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +23,8 @@ import com.google.gson.JsonSyntaxException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevpreneur on 4/8/2018.
@@ -30,6 +33,8 @@ import java.text.DecimalFormat;
 public class ProductDetails extends DialogFragment {
 
     private static final String TAG = ProductDetails.class.getSimpleName();
+    Product product;
+    List cart = new ArrayList();
 
     // the url to search the barcode
     private static final String URL = "https://my-json-server.typicode.com/Apondi/JSONPlaceholder/products/";
@@ -63,7 +68,18 @@ public class ProductDetails extends DialogFragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(ProductDetails.this.getActivity(), ScanActivity.class));
                 dismiss();
+            }
+        });
+
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Add the product to the cart List
+                cart.add(product);
+                startActivity(new Intent(ProductDetails.this.getActivity(), ScanActivity.class));
+                Toast.makeText(getActivity(),"Success. Item Added to Cart", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -108,7 +124,7 @@ public class ProductDetails extends DialogFragment {
 
     private void renderProduct(JSONObject response) {
         try{
-            Product product = new Gson().fromJson(response.toString(), Product.class);
+            product = new Gson().fromJson(response.toString(), Product.class);
             if (product != null){
                 itemName.setText(product.getName());
                 itemPrice.setText(product.getPrice());
@@ -132,7 +148,7 @@ public class ProductDetails extends DialogFragment {
 
     private void numberPickerInitializer() {
         itemQty.setMinValue(1);
-        itemQty.setMaxValue(50);
+        itemQty.setMaxValue(10);
         itemQty.setWrapSelectorWheel(true);
 
         itemQty.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {

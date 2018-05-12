@@ -11,6 +11,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class ScanActivity extends AppCompatActivity {
+    IntentIntegrator integrator = new IntentIntegrator(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,6 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     protected void scannerInstance(){
-        IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setPrompt("Scan product barcode to shop");
         integrator.setOrientationLocked(true);
         integrator.setCaptureActivity(CaptureActivityPortrait.class);
@@ -53,6 +53,4 @@ public class ScanActivity extends AppCompatActivity {
 
         dialogFragment.show(fm, "Item Details Fragment");
     }
-
-
 }
