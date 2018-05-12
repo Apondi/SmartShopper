@@ -1,71 +1,58 @@
 package com.example.kevpreneur.smartshopper;
 
 import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.widget.Toast;
 
-import com.google.android.gms.vision.barcode.Barcode;
 
-import java.util.List;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
-import info.androidhive.barcode.BarcodeReader;
-
-public class ScanActivity extends AppCompatActivity implements BarcodeReader.BarcodeReaderListener {
-
-    BarcodeReader barcodeReader;
+public class ScanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        // get the barcode reader instance
-        barcodeReader = (BarcodeReader) getSupportFragmentManager().findFragmentById(R.id.barcode_scanner);
+        scannerInstance();
     }
 
+    protected void scannerInstance(){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setPrompt("Scan product barcode to shop");
+        integrator.setOrientationLocked(true);
+        integrator.setCaptureActivity(CaptureActivityPortrait.class);
+        integrator.initiateScan();
+    }
+
+    // Get the results:
     @Override
-    public void onScanned(Barcode barcode) {
-        // playing barcode reader beep sound
-        barcodeReader.playBeep();
-
-//        barcodeReader.pauseScanning();
-        showDialogFragment(barcode);
-
-//        barcodeReader.resumeScanning();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                showDialogFragment(result.getContents());
+//                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
-    private void showDialogFragment(Barcode barcode) {
+    private void showDialogFragment(String barcode) {
         FragmentManager fm = getFragmentManager();
         Bundle args = new Bundle();
         ProductDetails dialogFragment = new ProductDetails();
-        args.putString("barcode", barcode.rawValue);
+        args.putString("barcode", barcode);
         dialogFragment.setArguments(args);
 
         dialogFragment.show(fm, "Item Details Fragment");
     }
 
-    @Override
-    public void onScannedMultiple(List<Barcode> list) {
 
-    }
-
-    @Override
-    public void onBitmapScanned(SparseArray<Barcode> sparseArray) {
-
-    }
-
-    @Override
-    public void onScanError(String errorMessage) {
-        Toast.makeText(getApplicationContext(), "Error occurred while scanning " +
-                errorMessage, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onCameraPermissionDenied() {
-        finish();
-    }
 }
