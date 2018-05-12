@@ -59,7 +59,7 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/btn_scan"
+            android:id="@+id/btn_scan_product"
             android:layout_width="194dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -69,12 +69,12 @@
             android:foreground="?attr/selectableItemBackground"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Scanner"
+            android:text="Scan product"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_checkout"
+            android:id="@+id/btn_pay"
             android:layout_width="192dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -84,7 +84,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Checkout"
+            android:text="pay"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>

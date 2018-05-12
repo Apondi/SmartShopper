@@ -1,12 +1,16 @@
 package com.example.kevpreneur.smartshopper;
 
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.Credential;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.android.volley.toolbox.HttpResponse;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Cart extends AppCompatActivity {
@@ -54,19 +58,24 @@ public class Cart extends AppCompatActivity {
         ListView listView  = (ListView) findViewById(R.id.items_List);
         listView.setAdapter(adapter);
 
-        findViewById(R.id.btn_scan).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_scan_product).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Cart.this, ScanActivity.class));
             }
         });
 
-        findViewById(R.id.btn_checkout).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_pay).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Cart.this, ScanActivity.class));
+                mcbAPICall();
             }
         });
+    }
+
+
+    public void mcbAPICall(){
+
     }
 
 //
@@ -79,7 +88,7 @@ public class Cart extends AppCompatActivity {
 //    }
 //
 //    private void getRepoItems(){
-//        for (ProductDetacccccccccccccccils.Product product : repository ){
+//        for (ProductDetails.Product product : repository ){
 //            cartItems.add(product.getName());
 //        }
 //    }
