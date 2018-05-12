@@ -49,7 +49,7 @@ public class ProductDetails extends DialogFragment {
 
         //pass the value of the scanned barcode to the attribute as a string
         String barcodeValue = getArguments().getString("barcode");
-        checkBarcode(barcodeValue);
+//        checkBarcode(barcodeValue);
 
         itemName = rootView.findViewById(R.id.itemName);
         itemPrice = rootView.findViewById(R.id.itemPrice);
@@ -150,12 +150,12 @@ public class ProductDetails extends DialogFragment {
         });
     }
 
-    private void checkBarcode(String barcodeValue) {
-        if (TextUtils.isEmpty(barcodeValue)) {
-            Toast.makeText(getActivity(), "Barcode is empty!", Toast.LENGTH_LONG).show();
-            dismiss();
-        }
-    }
+//    private void checkBarcode(String barcodeValue) {
+//        if (TextUtils.isEmpty(barcodeValue)) {
+//            Toast.makeText(getActivity(), "Barcode is empty!", Toast.LENGTH_LONG).show();
+//            dismiss();
+//        }
+//    }
 
     //the product inner class
     public class Product {
