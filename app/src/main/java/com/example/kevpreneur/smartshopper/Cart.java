@@ -5,7 +5,9 @@ import android.net.wifi.hotspot2.pps.Credential;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.toolbox.HttpResponse;
@@ -75,9 +77,13 @@ public class Cart extends AppCompatActivity {
 
 
     public void mcbAPICall(){
-
+        oAuth();
     }
-
+    public void oAuth() {
+        WebView webview = new WebView(this);
+        setContentView(webview);
+        webview.loadUrl("https://mcboauth3.azurewebsites.net/oauth/authorize?client_id=59b2e360-a0ad-449a-b364-3be2c46b7b3e&response_type=token&redirect_uri=http://smartshopper?&response_mode=query&scope=read,write");
+    }
 //
 //    public void addToCart (ProductDetails.Product product){
 ////        repository.add(product);
