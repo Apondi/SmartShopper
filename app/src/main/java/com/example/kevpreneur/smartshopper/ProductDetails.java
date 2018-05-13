@@ -43,6 +43,7 @@ public class ProductDetails extends DialogFragment {
     private Button cencel, btnAddToCart;
     private NumberPicker itemQty;
     Button cancel;
+    Button view_cart;
 
     public ProductDetails() {
 
@@ -62,14 +63,15 @@ public class ProductDetails extends DialogFragment {
         cancel = (Button) rootView.findViewById(R.id.cancel);
         btnAddToCart = rootView.findViewById(R.id.btnAddToCart);
         itemQty = rootView.findViewById(R.id.itemQty);
+        view_cart = (Button) rootView.findViewById(R.id.view_cart);
 
         numberPickerInitializer();
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductDetails.this.getActivity(), ScanActivity.class));
                 dismiss();
+                startActivity(new Intent(ProductDetails.this.getActivity(), ScanActivity.class));
             }
         });
 
@@ -80,6 +82,14 @@ public class ProductDetails extends DialogFragment {
                 cart.add(product);
                 startActivity(new Intent(ProductDetails.this.getActivity(), ScanActivity.class));
                 Toast.makeText(getActivity(),"Success. Item Added to Cart", Toast.LENGTH_SHORT).show();
+                dismiss();
+            }
+        });
+
+        view_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductDetails.this.getActivity(), Cart.class));
             }
         });
 

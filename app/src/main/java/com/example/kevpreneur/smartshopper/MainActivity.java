@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.view_cart).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_create_shopping_list).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Cart.class));
+                startActivity(new Intent(MainActivity.this, ShoppingListActivity.class));
             }
         });
     }

@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="97dp"
         android:background="@android:color/transparent"
         android:fontFamily="sans-serif-medium"
         android:foreground="?attr/selectableItemBackground"
@@ -55,18 +55,18 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/view_cart"
+        android:id="@+id/btn_create_shopping_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="38dp"
         android:background="@android:color/transparent"
         android:fontFamily="sans-serif-medium"
         android:foreground="?attr/selectableItemBackground"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="View Cart"
+        android:text="Create Shopping List"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
