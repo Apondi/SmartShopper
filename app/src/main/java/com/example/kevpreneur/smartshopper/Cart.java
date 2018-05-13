@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.net.wifi.hotspot2.pps.Credential;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -79,11 +82,27 @@ public class Cart extends AppCompatActivity {
     public void mcbAPICall(){
         oAuth();
     }
+
+    String token;
+    WebView webview;
     public void oAuth() {
-        WebView webview = new WebView(this);
+        webview = new WebView(this);
         setContentView(webview);
         webview.loadUrl("https://mcboauth3.azurewebsites.net/oauth/authorize?client_id=59b2e360-a0ad-449a-b364-3be2c46b7b3e&response_type=token&redirect_uri=http://smartshopper?&response_mode=query&scope=read,write");
+
+//        webview.setWebViewClient(new WebViewClient(){
+//            @Override
+//            public void onLoadResource(WebView view, String url) {
+//                super.onPageFinished(view, url);
+//                Log.e("test", "------Url:" + url);
+//                if (url.contains("?#access_token")) {
+//                    token = webview.getUrl().substring(35, -36);
+//                    startActivity(new Intent(getApplicationContext(), ReceiptActivity.class));
+//                }
+//            }
+//        });
     }
+
 //
 //    public void addToCart (ProductDetails.Product product){
 ////        repository.add(product);

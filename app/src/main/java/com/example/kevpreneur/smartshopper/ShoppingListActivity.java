@@ -8,12 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class ShoppingListActivity extends AppCompatActivity {
     private ListView mShoppingList;
     private EditText mItemEdit;
     private Button mAddButton;
 
     private ArrayAdapter<String> mAdapter;
+    private ArrayList<String> shoppingList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +30,19 @@ public class ShoppingListActivity extends AppCompatActivity {
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         mShoppingList.setAdapter(mAdapter);
 
+        if(!shoppingList.isEmpty()) {
+            for (String p: shoppingList
+                    ) {
+                mAdapter.add(p);
+            }
+        }
+
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String item = mItemEdit.getText().toString();
                 mAdapter.add(item);
+                shoppingList.add(item);
                 mAdapter.notifyDataSetChanged();
                 mItemEdit.setText("");
             }
