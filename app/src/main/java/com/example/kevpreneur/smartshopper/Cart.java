@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
 import com.android.volley.toolbox.HttpResponse;
 
 import java.io.IOException;
@@ -81,6 +83,21 @@ public class Cart extends AppCompatActivity {
 
     public void mcbAPICall(){
         oAuth();
+//        OkHttpClient client = new OkHttpClient();
+
+//        MySingleton mediaType = MySingleton.parse("application/json");
+//        RequestBody body = RequestBody.create(mediaType, "{\"debitAccountNumber\":\"6011227304217824\",\"creditAccountNumber\":\"6304330631637270\",\"transferAmount\":26.6001879,\"narrative\":\"karsuwe\"}");
+//        Request request = new Request.Builder()
+//                .url("https://api.eu.apiconnect.ibmcloud.com/mauritius-commercial-bank-ltd-dev/mcb-mu-catalog/WebModelBank/api/transactions/AccountTransfer")
+//                .post(body)
+//                .addHeader("x-ibm-client-id", "59b2e360-a0ad-449a-b364-3be2c46b7b3e")
+//                .addHeader("x-ibm-client-secret", "R4wC7uF8yD7oP7fH8yD6vH3mP3dM6fR0oU3yD7bI4wT1gG0fE3")
+//                .addHeader("authorization", "vcInB8QtAXoq5E3jFovGQluQpOJLfZ2Hf6m-NIqeJ4kB7lTFoQIyIl-oc7gCZ2TcabsvaU7m7fHndCorjCgXR_lNOOnqGqNcVX5gl4Ywnm_88tRN7a79DYON8I0tcv4p5iKuwU6J-1_zC-xW_J65YiGWufqZCgb1eg1C4QkJcooBtogK-sxb24N0R2HTC55m7v2RY7pyieLF1deSJg1JAW_qJ1jZk-6qhbGzw6Adv82-9fwYDo28qKYDp824cK-BwoUvrMixcRdpW6bODHa1SyxSuWk")
+//                .addHeader("content-type", "text/json")
+//                .addHeader("accept", "text/json")
+//                .build();
+//
+//        Response response = client.newCall(request).execute();
     }
 
     String token;
@@ -88,7 +105,7 @@ public class Cart extends AppCompatActivity {
     public void oAuth() {
         webview = new WebView(this);
         setContentView(webview);
-        webview.loadUrl("https://mcboauth3.azurewebsites.net/oauth/authorize?client_id=59b2e360-a0ad-449a-b364-3be2c46b7b3e&response_type=token&redirect_uri=http://smartshopper?&response_mode=query&scope=read,write");
+        webview.loadUrl("https://mcboauth3.azurewebsites.net/oauth/authorize?client_id=59b2e360-a0ad-449a-b364-3be2c46b7b3e&response_type=token&redirect_uri=https://sites.google.com/alustudent.com/smartshopper/?&response_mode=query&scope=read,write");
 
 //        webview.setWebViewClient(new WebViewClient(){
 //            @Override
